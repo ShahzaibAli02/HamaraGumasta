@@ -74,11 +74,10 @@
 
             >
 
-            <EditText
+            <Spinner
+                android:id="@+id/edittextStates"
                 android:layout_width="match_parent"
                 android:background="@drawable/back_white_stroke"
-                android:gravity="center"
-                android:hint="Select State"
                 android:textColor="@color/grey"
                 android:paddingEnd="60dp"
 
@@ -104,14 +103,13 @@
 
             >
 
-            <EditText
+            <Spinner
+                android:id="@+id/spinnerCity"
                 android:layout_width="match_parent"
-                android:background="@drawable/back_white_stroke"
+                android:background="@drawable/back_white_stroke_disabled"
                 android:gravity="center"
-                android:hint="Select City"
+                android:clickable="false"
                 android:textColor="@color/grey"
-                android:paddingEnd="60dp"
-
                 android:layout_height="50dp"/>
             <ImageView
                 android:layout_width="30dp"
@@ -134,11 +132,12 @@
 
             >
 
-            <EditText
+            <Spinner
+                android:id="@+id/spinnerArea"
                 android:layout_width="match_parent"
-                android:background="@drawable/back_white_stroke"
+                android:background="@drawable/back_white_stroke_disabled"
                 android:gravity="center"
-                android:hint="Select Area"
+                android:enabled="false"
                 android:textColor="@color/grey"
                 android:paddingEnd="60dp"
 

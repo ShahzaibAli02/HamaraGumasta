@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="@color/background"
-    tools:context=".Activities.CreateNewPass">
+    tools:context=".Activities.Authentications.CreateNewPass">
 
     <LinearLayout
         android:layout_width="match_parent"

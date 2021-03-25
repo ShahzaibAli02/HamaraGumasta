@@ -1,5 +1,6 @@
 package com.hamara.gumasta.Fragments;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,12 +12,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import com.hamara.gumasta.Activities.ForgotPassword;
-import com.hamara.gumasta.Activities.Login_SignUp;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.hamara.gumasta.Activities.Authentications.ForgotPassword;
+import com.hamara.gumasta.Activities.Authentications.Login_SignUp;
 import com.hamara.gumasta.Activities.SetLocation;
+import com.hamara.gumasta.Model.ApiResponse;
+import com.hamara.gumasta.ProgressDialogManager;
 import com.hamara.gumasta.R;
+import com.hamara.gumasta.RetrofitClient;
+import com.hamara.gumasta.Util;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginFragment extends Fragment  implements View.OnClickListener {
 
@@ -26,6 +42,9 @@ public class LoginFragment extends Fragment  implements View.OnClickListener {
     TextView txtforgotPass;
     TextView txtSignUp;
     Button btnLogin;
+
+    com.google.android.material.textfield.TextInputEditText editTextPhone;
+    com.google.android.material.textfield.TextInputEditText editTextPass;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,6 +62,9 @@ public class LoginFragment extends Fragment  implements View.OnClickListener {
     private void initViews(View view)
     {
 
+
+        editTextPhone=view.findViewById(R.id.editTextPhone);
+        editTextPass=view.findViewById(R.id.editTextPass);
 
         btnLogin=view.findViewById(R.id.btnLogin);
         txtforgotPass=view.findViewById(R.id.txtforgotPass);
@@ -75,8 +97,62 @@ public class LoginFragment extends Fragment  implements View.OnClickListener {
 
         if(v==btnLogin)
         {
-            startActivity(new Intent(getActivity(), SetLocation.class));
+
+            if(!Util.checkForEmpty(new EditText[]{editTextPhone,editTextPass}))
+            {
+                authenticate();
+            }
+
         }
+
+
+    }
+
+    private void authenticate()
+    {
+
+        AlertDialog progressDialog = ProgressDialogManager.getProgressDialog(getActivity());
+        progressDialog.show();
+        RetrofitClient.createClient().login(editTextPhone.getText().toString().trim(),editTextPass.getText().toString()).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response)
+            {
+
+                progressDialog.dismiss();
+                try
+                {
+                    String json=response.body().string();
+
+                    Type type=new TypeToken<ApiResponse>(){}.getType();
+
+                    ApiResponse apiResponse=new Gson().fromJson(json,type);
+
+                    if(apiResponse.getMessage().equals("User Valid"))
+                    {
+                        startActivity(new Intent(getActivity(), SetLocation.class));
+                    }
+                    else
+                    {
+                      //  Util.showSnackBar(getActivity(),"Phone Or Password Is Invalid");
+                        Util.showSnackBar(getActivity(),apiResponse.getMessage());
+                    }
+
+
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                    Util.showSnackBar(getActivity(),"ERROR");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                progressDialog.dismiss();
+                Util.showSnackBar(getActivity(),t.getMessage());
+            }
+        });
 
 
     }

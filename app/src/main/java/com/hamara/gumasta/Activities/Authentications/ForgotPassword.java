@@ -1,4 +1,4 @@
-package com.hamara.gumasta.Activities;
+package com.hamara.gumasta.Activities.Authentications;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +21,6 @@ public class ForgotPassword extends AppCompatActivity {
     }
 
     public void onclickSend(View view) {
-        startActivity(new Intent(this,VerifyPhoneNum.class));
+        startActivity(new Intent(this, VerifyPhoneNum.class));
     }
 }

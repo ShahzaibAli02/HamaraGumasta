@@ -1,4 +1,4 @@
-package com.hamara.gumasta.Activities;
+package com.hamara.gumasta.Activities.Authentications;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
