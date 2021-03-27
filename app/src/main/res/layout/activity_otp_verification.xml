@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="@color/background"
-    tools:context=".Activities.Authentications.VerifyPhoneNum">
+    tools:context=".Activities.Authentications.OtpVerification">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +38,8 @@
                 android:gravity="center"
                 android:textColor="@color/blue"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif-condensed"
+
+                android:fontFamily="@font/roboto_regular"
                 android:textSize="20dp"
                 android:text="Verify Phone Number"
                 />
@@ -57,69 +58,107 @@
 
 
         <TextView
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="@font/roboto_regular"
             android:textSize="20dp"
+
             android:textColor="#4E4E4E"
             android:layout_marginTop="10dp"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
-            android:text="Please enter 4 digits code send
-to +0000000"
+            android:text="Please enter 4 digits code send to"
+            />
+        <TextView
+            android:id="@+id/txtphonenum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/roboto_bolditalic"
+            android:textSize="20dp"
+            android:textColor="#4E4E4E"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:text="+00000"
             />
 
 
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+
             >
 
+            <EditText
+                android:id="@+id/firstDigit"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:maxLength="1"
+                android:gravity="center"
+                android:inputType="number"
+                android:background="@drawable/back_white_stroke"
+                />
+
 
             <EditText
-                android:layout_width="60dp"
+                android:id="@+id/secondDigit"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:background="@drawable/back_white"
-                android:gravity="center"
                 android:maxLength="1"
-                android:text="3"
+                android:gravity="center"
+                android:inputType="number"
+                android:background="@drawable/back_white_stroke"
+                android:layout_marginLeft="10dp" />
 
+
+            <EditText
+                android:id="@+id/thirdDigit"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_marginLeft="10dp"
+                android:maxLength="1"
+                android:background="@drawable/back_white_stroke"
+                />
+
+            <EditText
+                android:id="@+id/fourthDigit"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:maxLength="1"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/back_white_stroke"
                 />
             <EditText
-                android:layout_width="60dp"
+                android:id="@+id/fivthDigit"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:background="@drawable/back_white"
-                android:layout_marginStart="20dp"
-                android:gravity="center"
                 android:maxLength="1"
-                android:text="3"
-
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/back_white_stroke"
                 />
             <EditText
-                android:layout_width="60dp"
+                android:id="@+id/sixthDigit"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:background="@drawable/back_white"
-                android:layout_marginStart="20dp"
-                android:gravity="center"
                 android:maxLength="1"
-                android:text="3"
-
-                />
-            <EditText
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:background="@drawable/back_white"
-                android:layout_marginStart="20dp"
                 android:gravity="center"
-                android:maxLength="1"
-                android:text="3"
-
+                android:inputType="number"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/back_white_stroke"
                 />
+
+
         </LinearLayout>
 
 
@@ -128,7 +167,7 @@ to +0000000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="@font/roboto_regular"
             android:textSize="20dp"
             android:textColor="#4E4E4E"
             android:layout_marginTop="10dp"
@@ -139,11 +178,11 @@ to +0000000"
 
 
         <TextView
-
+            android:id="@+id/textResendCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="@font/roboto_bold"
             android:textSize="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="40dp"
@@ -159,6 +198,7 @@ to +0000000"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="Verify"
+            android:fontFamily="@font/roboto_regular"
             android:onClick="onClickVerify"
             android:layout_gravity="center"
             android:textColor="@color/white"

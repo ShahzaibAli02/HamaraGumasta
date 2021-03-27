@@ -1,14 +1,18 @@
 package com.hamara.gumasta.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.google.gson.Gson;
@@ -19,17 +23,21 @@ import com.hamara.gumasta.Model.Area;
 import com.hamara.gumasta.Model.Areas;
 import com.hamara.gumasta.Model.Cities;
 import com.hamara.gumasta.Model.City;
+import com.hamara.gumasta.Model.Report;
 import com.hamara.gumasta.Model.State;
 import com.hamara.gumasta.Model.States;
+import com.hamara.gumasta.Model.User;
 import com.hamara.gumasta.ProgressDialogManager;
 import com.hamara.gumasta.R;
 import com.hamara.gumasta.RetrofitClient;
+import com.hamara.gumasta.SharedPreference.SharedPref;
 import com.hamara.gumasta.Util;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -59,6 +67,20 @@ public class SetLocation extends AppCompatActivity {
 
         initViews();
         loadStates();
+        setUserInfoInReport();
+    }
+
+    private void setUserInfoInReport()
+    {
+
+
+        Report report=Report.getInstance();
+        User user = SharedPref.getUser(this);
+        report.setName(user.getData().getName());
+        report.setEmail(user.getData().getEmail());
+        report.setPhone(user.getData().getPhone());
+        report.setUser_id(user.getData().getId());
+        report.updateCreated_at();
     }
 
     private void initViews()
@@ -287,10 +309,80 @@ public class SetLocation extends AppCompatActivity {
     }
 
     public void onClickBack(View view) {
-        finish();
+       onBackPressed();
     }
 
-    public void onClickSubmit(View view) {
-        startActivity(new Intent(this,LicenseType.class));
+    public void onClickSubmit(View view)
+    {
+
+        String ErrorMessage=null;
+        Report report=Report.getInstance();
+
+        if (spinnerStates.getSelectedItemPosition() == 0)
+        {
+            ErrorMessage = "Please Select State";
+        } else {
+            report.setState(spinnerStates.getSelectedItem().toString());
+        }
+        if (spinnerCity.getSelectedItemPosition() == 0)
+        {
+            ErrorMessage = "Please Select City";
+        } else {
+            report.setCity(spinnerCity.getSelectedItem().toString());
+        }
+        if (spinnerArea.getSelectedItemPosition() == 0)
+        {
+            ErrorMessage = "Please Select Area";
+        } else {
+            report.setArea(spinnerArea.getSelectedItem().toString());
+        }
+
+        if(ErrorMessage==null)
+        {
+            startActivity(new Intent(this,LicenseType.class));
+        }
+        else
+        {
+            Util.showSnackBar(getActivity(),ErrorMessage);
+        }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+      //  super.onBackPressed();
+        askToLogout();
+    }
+
+    private void askToLogout()
+    {
+
+
+        AlertDialog.Builder alertDialog=new AlertDialog.Builder(this,R.style.AlertDialogTheme);
+        View inflate = LayoutInflater.from(this).inflate(R.layout.lyt_dialog, null);
+        alertDialog.setView(inflate);
+        AlertDialog alertDialog1 = alertDialog.create();
+        alertDialog1.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        alertDialog1.show();
+        Button btnLogout=inflate.findViewById(R.id.btnLogout);
+        Button btnNo=inflate.findViewById(R.id.btnNo);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog1.dismiss();
+                ActivityCompat.finishAffinity(SetLocation.this);
+                finish();
+                SharedPref.setRemMe(SetLocation.this,false);
+                startActivity(new Intent(SetLocation.this,Login_SignUp.class));
+            }
+        });
+       btnNo.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               alertDialog1.dismiss();
+           }
+       });
+
+
     }
 }

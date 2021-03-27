@@ -17,7 +17,7 @@
         android:gravity="center"
         android:textColor="@color/blue"
         android:textStyle="bold"
-        android:fontFamily="sans-serif-condensed"
+        android:fontFamily="@font/roboto_regular"
         android:textSize="30dp"
         android:layout_marginTop="80dp"
         android:layout_marginStart="30dp"

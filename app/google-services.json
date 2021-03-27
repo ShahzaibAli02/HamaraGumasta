@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "323749811010",
+    "project_id": "hamaragumasta-fa7d0",
+    "storage_bucket": "hamaragumasta-fa7d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323749811010:android:a6584744bc32349b376edb",
+        "android_client_info": {
+          "package_name": "com.hamara.gumasta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323749811010-jv23od9bsto18v3v1v1huon5ai1diea7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG9_YBRhAC9m5SJ-gJrCfyfclkyXo7t4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323749811010-jv23od9bsto18v3v1v1huon5ai1diea7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -57,6 +57,7 @@
 
             >
             <CheckBox
+                android:id="@+id/checkboxGstLic"
                 android:layout_width="39dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -65,12 +66,14 @@
                 />
 
             <TextView
+                android:id="@+id/txtGstLicense"
                 android:layout_marginStart="20dp"
                 android:layout_width="match_parent"
                 android:background="@drawable/back_white"
                 android:gravity="center"
                 android:textSize="18dp"
-                android:fontFamily="sans-serif-condensed"
+                android:onClick="onClickTxtLicenseType"
+                android:fontFamily="@font/roboto_regular"
                 android:text="GST License"
                 android:textColor="@color/black"
                 android:layout_height="50dp"/>
@@ -90,6 +93,7 @@
 
             >
             <CheckBox
+                android:id="@+id/checkboxITR"
                 android:layout_width="39dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -98,12 +102,14 @@
                 />
 
             <TextView
+                android:id="@+id/txtITRLicense"
                 android:layout_marginStart="20dp"
                 android:layout_width="match_parent"
                 android:background="@drawable/back_white"
                 android:gravity="center"
                 android:textSize="18dp"
-                android:fontFamily="sans-serif-condensed"
+                android:onClick="onClickTxtLicenseType"
+                android:fontFamily="@font/roboto_regular"
                 android:text="ITR License"
                 android:textColor="@color/black"
                 android:layout_height="50dp"/>
@@ -124,6 +130,7 @@
 
             >
             <CheckBox
+                android:id="@+id/checkboxLabour"
                 android:layout_width="39dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -132,12 +139,14 @@
                 />
 
             <TextView
+                android:id="@+id/txtLabourLicense"
                 android:layout_marginStart="20dp"
                 android:layout_width="match_parent"
                 android:background="@drawable/back_white"
                 android:gravity="center"
                 android:textSize="18dp"
-                android:fontFamily="sans-serif-condensed"
+                android:onClick="onClickTxtLicenseType"
+                android:fontFamily="@font/roboto_regular"
                 android:text="LABOUR License"
                 android:textColor="@color/black"
                 android:layout_height="50dp"/>
@@ -157,6 +166,7 @@
 
             >
             <CheckBox
+                android:id="@+id/checkboxFood"
                 android:layout_width="39dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -165,12 +175,14 @@
                 />
 
             <TextView
+                android:id="@+id/txtFoodLicense"
                 android:layout_marginStart="20dp"
                 android:layout_width="match_parent"
                 android:background="@drawable/back_white"
                 android:gravity="center"
                 android:textSize="18dp"
-                android:fontFamily="sans-serif-condensed"
+                android:onClick="onClickTxtLicenseType"
+                android:fontFamily="@font/roboto_regular"
                 android:text="FOOD License"
                 android:textColor="@color/black"
                 android:layout_height="50dp"/>
@@ -183,6 +195,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="Submit"
+            android:fontFamily="@font/roboto_regular"
             android:layout_marginBottom="40dp"
             android:onClick="onClickSubmit"
             android:layout_gravity="center"

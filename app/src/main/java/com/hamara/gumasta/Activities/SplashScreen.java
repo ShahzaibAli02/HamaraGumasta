@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 
 import com.hamara.gumasta.Activities.Authentications.Login_SignUp;
 import com.hamara.gumasta.R;
+import com.hamara.gumasta.SharedPreference.SharedPref;
 
 public class SplashScreen extends AppCompatActivity
 {
@@ -20,25 +21,6 @@ public class SplashScreen extends AppCompatActivity
         setContentView(R.layout.activity_splash_screen);
 
 
-       /* RetrofitClient.createClient().signup("shzaib","alishahzaib@gmail.com","030387687394","12345").enqueue(new Callback<ResponseBody>()
-        {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    System.out.println(response.body().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                System.out.println("ERROR  :"+t.getMessage());
-            }
-
-        });
-
-        */
 
         new CountDownTimer(3000,1000)
         {
@@ -46,8 +28,17 @@ public class SplashScreen extends AppCompatActivity
             public void onFinish()
             {
 
+
                 finish();
-                startActivity(new Intent(SplashScreen.this, Login_SignUp.class));
+
+                if(SharedPref.isRemMe(SplashScreen.this))
+                {
+                    startActivity(new Intent(SplashScreen.this, SetLocation.class));
+                }
+                else
+                {
+                    startActivity(new Intent(SplashScreen.this, Login_SignUp.class));
+                }
 
             }
 

@@ -57,6 +57,7 @@
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:padding="5dp"
+                    android:fontFamily="@font/roboto_regular"
                     android:background="@drawable/back_blue"
                     android:text="Login"
                     android:textColor="@color/white"
@@ -70,7 +71,7 @@
                     android:layout_weight="1"
                     android:layout_height="40dp"
                     android:text="Sign up"
-
+                    android:fontFamily="@font/roboto_regular"
                     android:textColor="@color/blue"
                     android:textSize="20sp"
                     android:textStyle="bold"

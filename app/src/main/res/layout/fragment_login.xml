@@ -21,24 +21,39 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:elevation="5dp"
-            android:src="@drawable/ic_profile"
-            />
+            android:src="@drawable/ic_phone"
+            app:tint="@color/blue" />
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:gravity="start|center"
+            app:ccp_textSize="13dp"
+            android:elevation="3dp"
+            app:ccp_showFlag="false"
+            app:ccp_showNameCode="false"
+            app:ccp_autoFormatNumber="true"
+            app:ccp_countryPreference="US,IN,NZ"  />
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="-40dp"
-            app:hintTextColor="@color/grey"
-            android:hint="@string/mobile_number_email">
+            android:layout_marginStart="-90dp"
+            app:hintTextColor="@color/blue"
+            android:hint="@string/mobile_number_email"
+           >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextPhone"
                 android:layout_width="match_parent"
                 android:background="@color/white"
                 android:gravity="start"
-                android:text="03051506242"
+                android:fontFamily="@font/roboto_regular"
+                android:paddingTop="25dp"
+                android:inputType="phone"
                 android:textColor="@color/grey"
-                android:paddingStart="50dp"
-                android:layout_height="50dp"/>
+                android:paddingStart="100dp"
+                android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
@@ -65,18 +80,21 @@
             app:passwordToggleEnabled="true"
             android:layout_marginStart="-40dp"
             app:passwordToggleTint="@color/blue"
-            app:hintTextColor="@color/grey"
-            android:hint="@string/password">
+            app:hintTextColor="@color/blue"
+            android:hint="@string/password"
+         >
 
             <com.google.android.material.textfield.TextInputEditText
                android:id="@+id/editTextPass"
                 android:layout_width="match_parent"
                 android:background="@color/white"
                 android:gravity="start"
-                android:text="123456"
-                android:textColor="@color/grey"
+                android:fontFamily="@font/roboto_regular"
+
+                android:paddingTop="25dp"
+                android:textColor="#7E7C7C"
                 android:paddingStart="50dp"
-                android:layout_height="50dp"/>
+                android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
@@ -88,9 +106,11 @@
         >
 
         <CheckBox
+            android:id="@+id/checkboxRemMe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Remember Me"
+            android:fontFamily="@font/roboto_regular"
             android:textColor="@color/grey"
             android:buttonTint="@color/blue"
             />
@@ -100,6 +120,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="end"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:text="Forgot Password ?"
             />
@@ -113,6 +134,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Login"
+        android:fontFamily="@font/roboto_regular"
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:background="@drawable/back_blue"
@@ -131,6 +153,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create Account  "
+            android:fontFamily="@font/roboto_regular"
             />
 
         <TextView

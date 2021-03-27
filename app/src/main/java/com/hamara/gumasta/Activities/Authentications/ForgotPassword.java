@@ -20,7 +20,8 @@ public class ForgotPassword extends AppCompatActivity {
         finish();
     }
 
-    public void onclickSend(View view) {
-        startActivity(new Intent(this, VerifyPhoneNum.class));
+    public void onclickSend(View view)
+    {
+        startActivity(new Intent(this, OtpVerification.class));
     }
 }
