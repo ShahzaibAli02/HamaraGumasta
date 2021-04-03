@@ -41,6 +41,10 @@ public interface GumastaService {
     @POST("states")
     Call<ResponseBody> states();
 
+    @POST("services")
+    Call<ResponseBody> services();
+
+
 
     @FormUrlEncoded
     @POST("signup")
