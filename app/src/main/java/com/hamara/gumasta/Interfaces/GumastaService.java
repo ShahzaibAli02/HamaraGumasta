@@ -41,8 +41,14 @@ public interface GumastaService {
     @POST("states")
     Call<ResponseBody> states();
 
+
+    @FormUrlEncoded
     @POST("services")
-    Call<ResponseBody> services();
+    Call<ResponseBody> services(@Field("cat_id") String cat_id);
+
+
+    @POST("categories")
+    Call<ResponseBody> categories();
 
 
 
