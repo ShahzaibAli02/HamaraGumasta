@@ -12,10 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HamaraGumasta"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.Authentications.OtpVerification">
-
-
-        </activity>
+        <activity android:name=".Activities.ServicesActivity"></activity>
+        <activity android:name=".Activities.Authentications.OtpVerification"></activity>
         <activity android:name=".Activities.ThankYouScreen" />
         <activity android:name=".Activities.BusinessNature" />
         <activity android:name=".Activities.LicenseType" />

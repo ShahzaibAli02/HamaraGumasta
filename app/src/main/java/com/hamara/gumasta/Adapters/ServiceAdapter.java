@@ -8,15 +8,12 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.hamara.gumasta.Interfaces.RecyclerViewStateListener;
 import com.hamara.gumasta.Model.Service;
-import com.hamara.gumasta.Model.Services;
 import com.hamara.gumasta.R;
 
 import java.util.List;
@@ -25,10 +22,8 @@ import java.util.List;
 public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHolder> {
     private List<Service> listData;
     Context context;
-    RecyclerViewStateListener onServiceCheckStateChanged;
-    public ServiceAdapter(List<Service> listData, Context context,RecyclerViewStateListener onServiceCheckStateChanged) {
+    public ServiceAdapter(List<Service> listData, Context context) {
         this.listData = listData;
-        this.onServiceCheckStateChanged=onServiceCheckStateChanged;
         this.context=context;
     }
     @NonNull
@@ -58,7 +53,6 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHold
             {
                 service.setChecked(isChecked);
                 listData.set(position,service);
-                onServiceCheckStateChanged.onCheckedStateChanged(service,isChecked);
             }
         });
 
